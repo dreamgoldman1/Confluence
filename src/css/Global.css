@@ -24,15 +24,68 @@
   margin-left: auto;
 }
 
+label{
+  color: #bbb
+}
+
 .selected{
-  background-color: lightblue;
+  background-color: #e8effa;
+}
+
+.select-search-container{
+  margin-top: 10px;
+  position: relative;
 }
 
 .select-search-box{
   border: solid 1px lightblue;
   border-radius: 5px;
   margin-top: 20px;
-  margin-left: 20px;
+  padding: 10px;
+}
+
+.search-dest{
+  width: 90%;
+  border: none;
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.search{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.results-box{
+  position: absolute;
+  top: 85px;
+  max-width: 40%;
+  margin-left: 5px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.results {
+  max-height: 300px;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.item-result{
+  padding: 10px;
+}
+
+.item-result>div>div, .item-result>div>span{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.action-buttons {
+  padding: 10px;
+  border-top: 1px solid lightgray;
+  text-align: right;
 }
 
 .user-box{
@@ -45,4 +98,9 @@
 
 .user-box .flag{
   margin: -3px 10px;
+}
+
+.cancel-button{
+  text-decoration: none;
+  color: black;
 }

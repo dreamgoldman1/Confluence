@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 // Importing font icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 
 // importing data source
 import destinationJson from '../json/destination.json'
@@ -10,6 +10,7 @@ import destinationJson from '../json/destination.json'
 // Types definition
 type SearchResultsProps = {
   cancelAction(): void
+  confirmAction(): void
   selectAction(idx: number): void
   filterResult: destinationList
   selectedClass: string[]
@@ -37,20 +38,25 @@ interface DestinationList {
 
 const ItemResult = (props: itemResultsProps) => {
   const { selectAction, filterResult, selectedClass } = props
+  const iconLocation = <FontAwesomeIcon icon={faLocationDot} />
 
   const renderElements = () => {
     let item = filterResult.map((ele, idx) => {
       let src = `http://purecatamphetamine.github.io/country-flag-icons/3x2/${ele.codeCountry}.svg`
       return (
         <div className={`item-result ${selectedClass[idx] ? selectedClass[idx] : ''}`} key={idx} onClick={() => selectAction(idx)}>
-          <div className='flag'>
-            <img
-              alt = {ele.country}
-              src = {src} />
+          <div>
+            <span>{iconLocation}</span>
+            <div className='flag'>
+              <img
+                alt = {ele.country}
+                src = {src} />
+            </div>
+            <div className="city-name">{ele.city}</div>
           </div>
-          <div className="city-name">{ele.city}</div>
-          <div className="country-code">{ele.codeCountry}</div>
-          <div className="country">{ele.country}</div>
+          <div>
+            <div className="country">{ele.codeCountry}, {ele.country}</div>
+          </div>
         </div>
       )
     })
@@ -61,10 +67,10 @@ const ItemResult = (props: itemResultsProps) => {
 }
 
 const SearchResults = (props: SearchResultsProps) => {
-  const { cancelAction, filterResult, selectAction, selectedClass, countSelected } = props
+  const { cancelAction, filterResult, selectAction, selectedClass, countSelected, confirmAction } = props
 
   return (
-    <section className='results-box'>
+    <section className='results-box col-6'>
       <section className='results'>
         <h3>Results</h3>
         {filterResult.length > 0 &&
@@ -75,12 +81,14 @@ const SearchResults = (props: SearchResultsProps) => {
         }
       </section>
 
+      {/*  
       <section className='selected-items'>
         <h3>Selected ({countSelected})</h3>
       </section>
+      */}
       <section className='action-buttons'>
-        <button className="cancel-button" onClick={cancelAction} >Cancel</button>
-        <button className="confirm-button">Confirm</button>
+        <button className="btn btn-link cancel-button" onClick={cancelAction} >Cancel</button>
+        <button className="btn btn-outline-secondary confirm-button" onClick={confirmAction}>Confirm</button>
       </section>
     </section>
   )
@@ -99,10 +107,22 @@ const SelectDest = () => {
     setShowResults(true)
   }
 
-  function cancelAction() {
+  let cancelAction = () => {
     setShowResults(false)
     setFilterResult([])
     setDestination('')
+  }
+
+  let confirmAction = () => {
+    let count: string[] = selectedClass.filter((ele) => {
+      if (ele === 'selected'){
+        return ele
+      }
+      return false
+    })
+    setCountSelected(count.length)
+    setShowResults(false)
+    setDestination(`Selected ${countSelected}`)
   }
 
   let handleOnchange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -133,14 +153,14 @@ const SelectDest = () => {
   }
 
   return (
-    <div>
-      <div className='select-search-box'>
-        <div className='label'>Destination</div>
-        <input onClick={handleInput} onChange={handleOnchange} value={destination} name="searchDest" type="text" placeholder='Search' />
+    <div className='row select-search-container'>
+      <div className='select-search-box col-4'>
+        <label className='label' htmlFor='search-dest'>Destination</label>
+        <input className='search-dest' id='search-dest' onClick={handleInput} onChange={handleOnchange} value={destination} name="searchDest" type="text" placeholder='Search' />
         <div className="search">{iconSearch}</div>
       </div>
 
-      {showResults && <SearchResults cancelAction={cancelAction} filterResult={filterResult} selectAction={selectAction} selectedClass={selectedClass} countSelected={countSelected} />}
+      {showResults && <SearchResults cancelAction={cancelAction} filterResult={filterResult} selectAction={selectAction} selectedClass={selectedClass} countSelected={countSelected} confirmAction={confirmAction} />}
 
     </div>
   )
