@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Confluence/static/css/main.79582ff7.css",
+    "main.js": "/Confluence/static/js/main.959fbea8.js",
+    "static/js/787.8772ab14.chunk.js": "/Confluence/static/js/787.8772ab14.chunk.js",
+    "index.html": "/Confluence/index.html",
+    "main.79582ff7.css.map": "/Confluence/static/css/main.79582ff7.css.map",
+    "main.959fbea8.js.map": "/Confluence/static/js/main.959fbea8.js.map",
+    "787.8772ab14.chunk.js.map": "/Confluence/static/js/787.8772ab14.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.79582ff7.css",
+    "static/js/main.959fbea8.js"
+  ]
+}
