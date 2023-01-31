@@ -1,13 +1,18 @@
 import React from 'react';
-import './App.css';
-import UserBox from './components/UserBox';
-import Tabs from './components/Tabs';
+
+// Global Styles
+import './css/Global.css';
+
+// Components
+import SearchBox from './components/SearchBox';
 
 function App() {
   return (
     <div className="App">
-      <UserBox />
-      <Tabs />
+      <div className='first-block'></div>
+      <div className='container main'>
+        <SearchBox />
+      </div>
     </div>
   );
 }

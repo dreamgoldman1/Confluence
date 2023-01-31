@@ -1,0 +1,52 @@
+[
+    {
+      "city": "Buenos Aires",
+      "codeCountry": "AR",
+      "country": "Argentina"
+    },
+    {
+      "city": "La Matanza",
+      "codeCountry": "AR",
+      "country": "Argentina"
+    },
+    {
+      "city": "Córdoba",
+      "codeCountry": "AR",
+      "country": "Argentina"
+    },
+    {
+      "city": "Rosario",
+      "codeCountry": "AR",
+      "country": "Argentina"
+    },
+    {
+      "city": "La Plata",
+      "codeCountry": "AR",
+      "country": "Argentina"
+    },
+    {
+      "city": "Santa Marta",
+      "codeCountry": "CO",
+      "country": "Colombia"
+    },
+    {
+      "city": "Cartagena",
+      "codeCountry": "CO",
+      "country": "Colombia"
+    },
+    {
+      "city": "Bogotá",
+      "codeCountry": "CO",
+      "country": "Colombia"
+    },
+    {
+      "city": "Barranquilla",
+      "codeCountry": "CO",
+      "country": "Colombia"
+    },
+    {
+      "city": "Medellín",
+      "codeCountry": "CO",
+      "country": "Colombia"
+    }
+  ]

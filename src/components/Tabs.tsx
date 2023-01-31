@@ -1,7 +1,12 @@
 import React from 'react'
+
+// Importing font icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+
+// Components
 import SelectDest from './SelectDest'
+import UserBox from './UserBox'
 
 const Tabs = () => {
   const comment = <FontAwesomeIcon icon={faComment} />
@@ -12,6 +17,7 @@ const Tabs = () => {
         <div className="nav nav-tabs" id="nav-tab" role="tablist">
           <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">{comment} Language</button>
           <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">{graduation} Higher Ed.</button>
+          <UserBox />
         </div>
       </nav>
       <div className="tab-content" id="nav-tabContent">
