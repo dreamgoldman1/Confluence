@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 
 // Importing font icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 
 // importing data source
-import destinationJson from '../json/locations.json'
+import destinationJson from '../json/campuses.json'
 
 // Types definition
 type SearchResultsProps = {
@@ -25,37 +25,37 @@ type itemResultsProps = {
 type destinationList = { 
   id: string
   name: string
-  country: string
+  location: {
+    id: string
+    country: string
+  }
 }[]
 
 // Interfaces
 interface DestinationList { 
   id: string
   name: string
-  country: string
+  location: {
+    id: string
+    country: string
+  }
 }
 
 const ItemResult = (props: itemResultsProps) => {
   const { selectAction, filterResult, selectedClass } = props
-  const iconLocation = <FontAwesomeIcon icon={faLocationDot} />
+  const iconGraduation = <FontAwesomeIcon icon={faGraduationCap} />
 
   const renderElements = () => {
     let item = filterResult.map((ele, idx) => {
-      let src = `http://purecatamphetamine.github.io/country-flag-icons/3x2/${ele.country}.svg`
-      let city = ele.name.split(',')
+      let campus = ele.name.split(' - ')
       return (
         <div className={`item-result ${selectedClass[idx] ? selectedClass[idx] : ''}`} key={idx} onClick={() => selectAction(idx)}>
           <div>
-            <span>{iconLocation}</span>
-            <div className='flag'>
-              <img
-                alt = {city[0]}
-                src = {src} />
-            </div>
-            <div className="city-name">{city[0]}</div>
+            <span>{iconGraduation}</span>
+            <div className="city-name">{campus[0]}</div>
           </div>
           <div>
-            <div className="country">{city[1]}, {city[2]}</div>
+            <div className="country">{campus[1]}, {ele.location.country}</div>
           </div>
         </div>
       )
@@ -70,14 +70,14 @@ const SearchResults = (props: SearchResultsProps) => {
   const { cancelAction, filterResult, selectAction, selectedClass, confirmAction } = props
 
   return (
-    <section className='results-box col-4'>
+    <section className='results-box provider col-4'>
       <section className='results'>
         <h3>Results</h3>
         {filterResult.length > 0 &&
           <ItemResult filterResult={filterResult} selectAction={selectAction} selectedClass={selectedClass} />
         }
         {filterResult.length === 0 &&
-          <div><p>Enter a destination to see results</p></div>
+          <div><p>Enter a provider to see results</p></div>
         }
       </section>
 
@@ -89,7 +89,7 @@ const SearchResults = (props: SearchResultsProps) => {
   )
 }
 
-const SelectDest = () => {
+const SelectProv = () => {
   const [showResults, setShowResults] = useState(false)
   const [destination, setDestination] = useState('')
   const [filterResult, setFilterResult] = useState<DestinationList[]>([])
@@ -123,7 +123,7 @@ const SelectDest = () => {
   let handleOnchange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedClass([''])
     setDestination(e.currentTarget.value)
-    let filteredResultArr: DestinationList[] = destinationJson.filter((item: { id:string; name: string; country: string; }) => {
+    let filteredResultArr: DestinationList[] = destinationJson.filter((item: { id:string; name:string; location:{ id:string; country:string;}; }) => {
       return item.name.toLowerCase().includes(destination.toLowerCase())
     })
     setFilterResult(filteredResultArr)
@@ -150,7 +150,7 @@ const SelectDest = () => {
   return (
     <>
       <div className='select-search-box col-4'>
-        <label className='label' htmlFor='search-dest'>Destination</label>
+        <label className='label' htmlFor='search-dest'>Provider</label>
         <input className='search-dest' id='search-dest' onClick={handleInput} onChange={handleOnchange} value={destination} name="searchDest" type="text" placeholder='Search' autoComplete="off" />
         <div className="search">{iconSearch}</div>
       </div>
@@ -160,4 +160,4 @@ const SelectDest = () => {
   )
 }
 
-export default SelectDest
+export default SelectProv

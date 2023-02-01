@@ -35,12 +35,14 @@ label{
 .select-search-container{
   margin-top: 10px;
   position: relative;
+  align-items: center;
 }
 
 .select-search-box{
   border: solid 1px lightblue;
   border-radius: 5px;
   margin-top: 20px;
+  margin-right: 10px;
   padding: 10px;
 }
 
@@ -59,12 +61,15 @@ label{
 .results-box{
   position: absolute;
   top: 85px;
-  max-width: 40%;
   margin-left: 5px;
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 10px;
+}
+
+.provider{
+  margin-left: 455px;
 }
 
 .results {
