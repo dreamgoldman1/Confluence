@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Importing font icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -98,6 +98,16 @@ const SelectProv = () => {
 
   const iconSearch = <FontAwesomeIcon icon={faMagnifyingGlass} />
 
+  useEffect(() => {
+    let count: string[] = selectedClass.filter((ele) => {
+      if (ele === 'selected'){
+        return ele
+      }
+      return false
+    })
+    setCountSelected(count.length)
+  }, [selectedClass]) 
+
   let handleInput = () => {
     setShowResults(true)
   }
@@ -109,13 +119,6 @@ const SelectProv = () => {
   }
 
   let confirmAction = () => {
-    let count: string[] = selectedClass.filter((ele) => {
-      if (ele === 'selected'){
-        return ele
-      }
-      return false
-    })
-    setCountSelected(count.length)
     setShowResults(false)
     setDestination(`Selected ${countSelected}`)
   }
@@ -137,14 +140,6 @@ const SelectProv = () => {
       selectedElements[idx] = ''
     }
     setSelectedClass(selectedElements)
-
-    let count: string[] = selectedClass.filter((ele) => {
-      if (ele === 'selected'){
-        return ele
-      }
-      return false
-    })
-    setCountSelected(count.length)
   }
 
   return (
