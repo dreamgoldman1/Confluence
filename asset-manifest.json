@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Confluence/static/css/main.b7d750e0.css",
-    "main.js": "/Confluence/static/js/main.1c0312cd.js",
+    "main.css": "/Confluence/static/css/main.5dca04b1.css",
+    "main.js": "/Confluence/static/js/main.ac3c6443.js",
     "static/js/787.8772ab14.chunk.js": "/Confluence/static/js/787.8772ab14.chunk.js",
     "index.html": "/Confluence/index.html",
-    "main.b7d750e0.css.map": "/Confluence/static/css/main.b7d750e0.css.map",
-    "main.1c0312cd.js.map": "/Confluence/static/js/main.1c0312cd.js.map",
+    "main.5dca04b1.css.map": "/Confluence/static/css/main.5dca04b1.css.map",
+    "main.ac3c6443.js.map": "/Confluence/static/js/main.ac3c6443.js.map",
     "787.8772ab14.chunk.js.map": "/Confluence/static/js/787.8772ab14.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7d750e0.css",
-    "static/js/main.1c0312cd.js"
+    "static/css/main.5dca04b1.css",
+    "static/js/main.ac3c6443.js"
   ]
 }
